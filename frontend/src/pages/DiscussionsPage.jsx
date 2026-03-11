@@ -81,6 +81,8 @@ const DiscussionsPage = () => {
 
   /* ── top-level state ── */
   const [activeView, setActiveView] = useState("courseCommunity"); // "courseCommunity" | "global"
+  const [showGuidelines, setShowGuidelines] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   /* ── course community state ── */
   const [coursePosts, setCoursePosts] = useState([]);
@@ -304,9 +306,8 @@ const DiscussionsPage = () => {
       <Sidebar activePage="discussions" />
 
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 mt-10 ${
-          sidebarCollapsed ? "lg:ml-20" : "lg:ml-80"
-        }`}
+        className={`flex-1 flex flex-col transition-all duration-300 mt-10 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-80"
+          }`}
       >
         {/* ══════ HERO ══════ */}
         <div className="relative overflow-hidden bg-linear-to-br from-teal-700 via-teal-600 to-teal-800 pt-16 pb-12 px-4 sm:px-8">
@@ -338,22 +339,20 @@ const DiscussionsPage = () => {
             <div className="flex justify-center gap-3 pt-2">
               <button
                 onClick={() => setActiveView("courseCommunity")}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
-                  activeView === "courseCommunity"
-                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
-                    : "bg-black/30 text-white hover:bg-black/40"
-                }`}
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${activeView === "courseCommunity"
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
+                  : "bg-black/30 text-white hover:bg-black/40"
+                  }`}
               >
                 <BookOpen className="w-4 h-4" />
                 Course Communities
               </button>
               <button
                 onClick={() => setActiveView("global")}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
-                  activeView === "global"
-                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
-                    : "bg-black/30 text-white hover:bg-black/40"
-                }`}
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${activeView === "global"
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
+                  : "bg-black/30 text-white hover:bg-black/40"
+                  }`}
               >
                 <Users className="w-4 h-4" />
                 Global
@@ -383,11 +382,10 @@ const DiscussionsPage = () => {
                       <button
                         key={s}
                         onClick={() => setCourseSort(s)}
-                        className={`px-4 py-1.5 text-sm rounded-md font-medium transition-colors ${
-                          courseSort === s
-                            ? "bg-red-500 text-white"
-                            : "bg-card border border-border text-muted hover:text-main"
-                        }`}
+                        className={`px-4 py-1.5 text-sm rounded-md font-medium transition-colors ${courseSort === s
+                          ? "bg-red-500 text-white"
+                          : "bg-card border border-border text-muted hover:text-main"
+                          }`}
                       >
                         {s}
                       </button>
@@ -496,7 +494,7 @@ const DiscussionsPage = () => {
               {selectedCourse && (
                 <div
                   ref={panelRef}
-                  className="fixed top-0 right-0 h-full w-full sm:w-100 bg-card border-l border-border shadow-2xl z-50 flex flex-col"
+                  className="fixed top-0 right-0 h-full w-full sm:w-100 bg-card border-l border-border shadow-2xl z-[50] flex flex-col"
                 >
                   {/* panel header */}
                   <div className="p-4 border-b border-border flex items-center justify-between shrink-0">
@@ -531,11 +529,10 @@ const DiscussionsPage = () => {
                       <button
                         key={s}
                         onClick={() => setPanelSort(s)}
-                        className={`flex-1 py-2.5 text-sm font-medium transition-colors flex items-center justify-center gap-1.5 ${
-                          panelSort === s
-                            ? "bg-indigo-600/10 text-indigo-500 border-b-2 border-indigo-500"
-                            : "text-muted hover:text-main"
-                        }`}
+                        className={`flex-1 py-2.5 text-sm font-medium transition-colors flex items-center justify-center gap-1.5 ${panelSort === s
+                          ? "bg-indigo-600/10 text-indigo-500 border-b-2 border-indigo-500"
+                          : "text-muted hover:text-main"
+                          }`}
                       >
                         {s === "Recent" ? <Clock className="w-3.5 h-3.5" /> : <TrendingUp className="w-3.5 h-3.5" />}
                         {s}
@@ -587,11 +584,10 @@ const DiscussionsPage = () => {
                                     e.stopPropagation();
                                     handleLike(post.id, "panel");
                                   }}
-                                  className={`flex items-center gap-1 hover:text-indigo-500 ${
-                                    post.likes?.some((l) => l.userId === user?.id)
-                                      ? "text-indigo-500"
-                                      : ""
-                                  }`}
+                                  className={`flex items-center gap-1 hover:text-indigo-500 ${post.likes?.some((l) => l.userId === user?.id)
+                                    ? "text-indigo-500"
+                                    : ""
+                                    }`}
                                 >
                                   <ThumbsUp className="w-3.5 h-3.5" />
                                   {post.likes?.length || 0}
@@ -601,11 +597,10 @@ const DiscussionsPage = () => {
                                     e.stopPropagation();
                                     handleDislike(post.id, "panel");
                                   }}
-                                  className={`flex items-center gap-1 hover:text-red-500 ${
-                                    post.dislikes?.some((d) => d.userId === user?.id)
-                                      ? "text-red-500"
-                                      : ""
-                                  }`}
+                                  className={`flex items-center gap-1 hover:text-red-500 ${post.dislikes?.some((d) => d.userId === user?.id)
+                                    ? "text-red-500"
+                                    : ""
+                                    }`}
                                 >
                                   <ThumbsDown className="w-3.5 h-3.5" />
                                   {post.dislikes?.length || 0}
@@ -685,27 +680,62 @@ const DiscussionsPage = () => {
           {activeView === "global" && (
             <main className="flex-1 p-4 sm:p-6 overflow-y-auto">
               <div className="max-w-4xl mx-auto space-y-6">
+                
                 {/* Welcome Banner */}
-                <div className="bg-linear-to-r from-red-900/30 to-orange-900/30 border border-orange-500/30 rounded-xl p-5">
-                  <div className="flex items-start gap-3">
-                    <div className="w-12 h-12 rounded-full bg-linear-to-br from-orange-500 to-red-500 flex items-center justify-center shrink-0">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-main text-lg">
-                        Welcome to Global Discussion!
-                      </h3>
-                      <p className="text-muted text-sm mt-1">
-                        Connect, share insights, find partners, and discuss
-                        anything globally.
-                      </p>
-                      <button className="mt-2 text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1">
-                        <ArrowRight className="w-3 h-3" />
-                        Community Guidelines
-                      </button>
+                {showWelcome && (
+                  <div className="relative bg-linear-to-r from-red-900/30 to-orange-900/30 border border-orange-500/30 rounded-xl p-5">
+                    {/* Close Button */}
+                    <button
+                      onClick={() => setShowWelcome(false)}
+                      className="absolute top-3 right-3 text-orange-300 hover:text-white transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-12 h-12 rounded-full bg-linear-to-br from-orange-500 to-red-500 flex items-center justify-center shrink-0">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+
+                      <div>
+                        <h3 className="font-bold text-main text-lg">
+                          Welcome to Global Discussion!
+                        </h3>
+
+                        <p className="text-muted text-sm mt-1">
+                          Connect, share insights, find partners, and discuss anything globally.
+                        </p>
+
+                        <div className="relative group inline-block">
+                          <button
+                            onClick={() => setShowGuidelines(!showGuidelines)}
+                            className="mt-2 text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
+                          >
+                            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                            Community Guidelines
+                          </button>
+
+                          <div
+                            className={`
+              absolute left-0 top-full mt-2 md:w-96 w-60 bg-[#1E1E24] border border-orange-500/30 rounded-lg p-3
+              text-xs text-gray-300 shadow-lg z-50 transition-all duration-200
+              ${showGuidelines ? "opacity-100 visible" : "opacity-0 invisible"}
+            `}
+                          >
+                            <ul className="space-y-1">
+                              <li>• Be respectful and courteous to all members.</li>
+                              <li>• Avoid spam, promotions, or irrelevant links.</li>
+                              <li>• Keep discussions related to learning and courses.</li>
+                              <li>• Respect different opinions and perspectives.</li>
+                              <li>• Do not share personal or sensitive information.</li>
+                              <li>• Help maintain a positive and supportive community.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Post Composer */}
                 <form
@@ -748,9 +778,8 @@ const DiscussionsPage = () => {
                         <ChevronDown className="w-4 h-4 text-muted absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
                       <span
-                        className={`text-sm ${
-                          globalContent.length > 900 ? "text-red-400" : "text-muted"
-                        }`}
+                        className={`text-sm ${globalContent.length > 900 ? "text-red-400" : "text-muted"
+                          }`}
                       >
                         {globalContent.length}/1000
                       </span>
@@ -796,11 +825,10 @@ const DiscussionsPage = () => {
                       <button
                         key={s}
                         onClick={() => setGlobalSort(s)}
-                        className={`px-4 py-1.5 text-sm rounded-md font-medium transition-colors ${
-                          globalSort === s
-                            ? "bg-red-500 text-white"
-                            : "bg-card border border-border text-muted hover:text-main"
-                        }`}
+                        className={`px-4 py-1.5 text-sm rounded-md font-medium transition-colors ${globalSort === s
+                          ? "bg-red-500 text-white"
+                          : "bg-card border border-border text-muted hover:text-main"
+                          }`}
                       >
                         {s}
                       </button>
@@ -844,10 +872,9 @@ const DiscussionsPage = () => {
                           </div>
                           {post.category && (
                             <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium border ${
-                                categoryColorMap[post.category] ||
+                              className={`px-3 py-1 rounded-full text-xs font-medium border ${categoryColorMap[post.category] ||
                                 "border-gray-500 text-gray-400"
-                              }`}
+                                }`}
                             >
                               {post.category}
                             </span>
@@ -862,22 +889,20 @@ const DiscussionsPage = () => {
                           <div className="flex items-center gap-5 text-xs text-muted">
                             <button
                               onClick={() => handleLike(post.id, "global")}
-                              className={`flex items-center gap-1 hover:text-indigo-500 transition-colors ${
-                                post.likes?.some((l) => l.userId === user?.id)
-                                  ? "text-indigo-500"
-                                  : ""
-                              }`}
+                              className={`flex items-center gap-1 hover:text-indigo-500 transition-colors ${post.likes?.some((l) => l.userId === user?.id)
+                                ? "text-indigo-500"
+                                : ""
+                                }`}
                             >
                               <ThumbsUp className="w-3.5 h-3.5" />
                               {post.likes?.length || 0}
                             </button>
                             <button
                               onClick={() => handleDislike(post.id, "global")}
-                              className={`flex items-center gap-1 hover:text-red-500 transition-colors ${
-                                post.dislikes?.some((d) => d.userId === user?.id)
-                                  ? "text-red-500"
-                                  : ""
-                              }`}
+                              className={`flex items-center gap-1 hover:text-red-500 transition-colors ${post.dislikes?.some((d) => d.userId === user?.id)
+                                ? "text-red-500"
+                                : ""
+                                }`}
                             >
                               <ThumbsDown className="w-3.5 h-3.5" />
                               {post.dislikes?.length || 0}
