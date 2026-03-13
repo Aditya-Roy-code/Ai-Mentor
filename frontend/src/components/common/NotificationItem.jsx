@@ -8,8 +8,7 @@ import {
     Award,
     Clock,
     User,
-    Shield,
-    Info
+    Shield
 } from "lucide-react";
 
 const getIcon = (type) => {
