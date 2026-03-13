@@ -527,7 +527,7 @@ const Dashboard = () => {
                     ) : normalizedSearchQuery && filteredAllCourses.length > 0 ? (
                       <div className="p-6">
                         <p className="text-center text-muted mb-4">
-                          Showing matching courses from all available courses.
+                          {t("dashboard.fallbackMatchingCourses")}
                         </p>
                         <div className="space-y-3">
                           {filteredAllCourses.slice(0, 6).map((course) => (
