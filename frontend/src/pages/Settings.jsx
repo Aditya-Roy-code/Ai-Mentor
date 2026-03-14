@@ -31,7 +31,7 @@ export default function Settings() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeSetting, setActiveSetting] = useState("Profile");
-  const { user, updateUser, fetchUserProfile  } = useAuth();
+  const { user, updateUser, fetchUserProfile } = useAuth();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -58,11 +58,34 @@ export default function Settings() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [profilepopup, setProfilePopup] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showDeletePopup, setshowDeletePopup] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
+
+  const handleDeleteAccount = async () => {
+    try {
+      setDeleting(true);
+
+      const token = localStorage.getItem("token");
+      await axios.delete("/api/users/delete-account", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Delete error", error);
+    } finally {
+      setDeleting(false);
+    }
+  }
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -155,9 +178,8 @@ export default function Settings() {
       />
 
       <div
-        className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 mt-3 ${
-          sidebarCollapsed ? "lg:ml-20" : "lg:ml-80"
-        }`}
+        className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 mt-3 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-80"
+          }`}
       >
         <div className="flex flex-1 mt-15">
           {/* Settings Sidebar */}
@@ -170,18 +192,16 @@ export default function Settings() {
                     <button
                       onClick={() => setActiveSetting(item.label)}
                       key={item.label}
-                      className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-left transition-colors ${
-                        activeSetting === item.label
-                          ? "bg-teal-50 dark:bg-teal-900/20 text-main"
-                          : "text-muted hover:bg-canvas-alt"
-                      }`}
+                      className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-left transition-colors ${activeSetting === item.label
+                        ? "bg-teal-50 dark:bg-teal-900/20 text-main"
+                        : "text-muted hover:bg-canvas-alt"
+                        }`}
                     >
                       <IconComponent
-                        className={`w-4 h-4 ${
-                          activeSetting === item.label
-                            ? "text-[#00BEA5]"
-                            : "text-[#00BEA5]"
-                        }`}
+                        className={`w-4 h-4 ${activeSetting === item.label
+                          ? "text-[#00BEA5]"
+                          : "text-[#00BEA5]"
+                          }`}
                       />
                       <span className="font-medium text-[16px] font-[Inter]">
                         {item.label}
@@ -302,6 +322,13 @@ export default function Settings() {
                           }
                           className="w-full min-h-[122px] px-4 py-3 rounded-xl border border-border text-[16px] font-[Inter] resize-none focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
                         />
+
+                      </div>
+                      <div className="flex justify-end ">
+                        <button className="px-4 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium font-[Inter] transition"
+                          onClick={() => setshowDeletePopup(true)}>
+                          Delete My Account
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -326,6 +353,43 @@ export default function Settings() {
               </div>
             )}
 
+            {/* Delete Button Popup */}
+            {showDeletePopup && (
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 w-[420px] text-center shadow-xl">
+                  <div className="mb-4 text-red-500 text-5xl">⚠</div>
+
+                  <h2 className="text-xl font-bold mb-2 text-main">
+                    Delete Account?
+                  </h2>
+
+                  <p className="text-muted mb-6 text-sm">
+                    This action will permanently delete your profile, courses,
+                    and progress. This cannot be undone.
+                  </p>
+
+                  <div className="flex justify-center gap-4">
+
+                    <button
+                      onClick={() => setshowDeletePopup(false)}
+                      className="px-6 py-2 border rounded-lg hover:bg-gray-200">
+                      Cancel
+                    </button>
+
+                    <button
+                      onClick={handleDeleteAccount}
+                      disabled={deleting}
+                      className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700 "
+                    >
+                      {deleting ? "Deleting..." : "Delete"}
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            )}
+            
             {activeSetting === "Notifications" && (
               <div className="max-w-[896px]">
                 <div className="mb-8">
@@ -386,7 +450,7 @@ export default function Settings() {
                         setLoading(true);
                         try {
                           const token = localStorage.getItem("token");
-            
+
                           await axios.put(
                             "/api/users/settings",
                             {
@@ -493,61 +557,61 @@ export default function Settings() {
                           <label className="absolute -top-2 left-4 bg-card px-2 text-[14px] text-muted font-medium font-[Inter]">
                             Current Password
                           </label>
-                            <input
-                              type={showCurrentPassword ? "text" : "password"}
-                              value={passwordData.currentPassword}
-                              onChange={(e) =>
-                                setPasswordData((prev) => ({
-                                  ...prev,
-                                  currentPassword: e.target.value,
-                                }))
-                              }
-                              className="w-full h-[50px] px-4 pr-12 rounded-xl border border-border text-[16px] font-[Inter] focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
-                            />
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setShowCurrentPassword(!showCurrentPassword)
-                              }
-                              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-main"
-                            >
-                              {showCurrentPassword ? (
-                                <EyeOff className="w-5 h-5" />
-                              ) : (
-                                <Eye className="w-5 h-5" />
-                              )}
-                            </button>
+                          <input
+                            type={showCurrentPassword ? "text" : "password"}
+                            value={passwordData.currentPassword}
+                            onChange={(e) =>
+                              setPasswordData((prev) => ({
+                                ...prev,
+                                currentPassword: e.target.value,
+                              }))
+                            }
+                            className="w-full h-[50px] px-4 pr-12 rounded-xl border border-border text-[16px] font-[Inter] focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
+                          />
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setShowCurrentPassword(!showCurrentPassword)
+                            }
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-main"
+                          >
+                            {showCurrentPassword ? (
+                              <EyeOff className="w-5 h-5" />
+                            ) : (
+                              <Eye className="w-5 h-5" />
+                            )}
+                          </button>
                         </div>
 
                         <div className="relative">
                           <label className="absolute -top-2 left-4 bg-card px-2 text-[14px] text-muted font-medium font-[Inter]">
                             New Password
                           </label>
-                            <input
-                              type={showNewPassword ? "text" : "password"}
-                              value={passwordData.newPassword}
-                              onChange={(e) =>
-                                setPasswordData((prev) => ({
-                                  ...prev,
-                                  newPassword: e.target.value,
-                                }))
-                              }
-                              className="w-full h-[50px] px-4 pr-12 rounded-xl border border-border text-[16px] font-[Inter] focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
-                            />
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setShowNewPassword(!showNewPassword)
-                              }
-                              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-main"
-                            >
-                              {showNewPassword ? (
-                                <EyeOff className="w-5 h-5" />
-                              ) : (
-                                <Eye className="w-5 h-5" />
-                              )}
-                            </button>
-                          
+                          <input
+                            type={showNewPassword ? "text" : "password"}
+                            value={passwordData.newPassword}
+                            onChange={(e) =>
+                              setPasswordData((prev) => ({
+                                ...prev,
+                                newPassword: e.target.value,
+                              }))
+                            }
+                            className="w-full h-[50px] px-4 pr-12 rounded-xl border border-border text-[16px] font-[Inter] focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
+                          />
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setShowNewPassword(!showNewPassword)
+                            }
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-main"
+                          >
+                            {showNewPassword ? (
+                              <EyeOff className="w-5 h-5" />
+                            ) : (
+                              <Eye className="w-5 h-5" />
+                            )}
+                          </button>
+
                         </div>
 
                         <div className="relative">
@@ -642,11 +706,10 @@ export default function Settings() {
                           <button
                             key={theme.value}
                             onClick={() => setTheme(theme.value)}
-                            className={`p-4 rounded-xl border-2 transition-colors ${
-                              theme === theme.value
-                                ? "border-primary bg-teal-50 dark:bg-teal-900/20 text-main"
-                                : "border-border hover:border-primary text-muted hover:text-main"
-                            }`}
+                            className={`p-4 rounded-xl border-2 transition-colors ${theme === theme.value
+                              ? "border-primary bg-teal-50 dark:bg-teal-900/20 text-main"
+                              : "border-border hover:border-primary text-muted hover:text-main"
+                              }`}
                           >
                             <div className="text-2xl mb-2">{theme.icon}</div>
                             <div className="text-[14px] font-medium font-[Inter]">
@@ -804,40 +867,40 @@ export default function Settings() {
                 </div>
               </div>
             )}
-            //=== Profile Popup======//
+            {/* //=== Profile Popup======// */}
             {profilepopup && (
-               <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-55 animate-fadeIn">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-55 animate-fadeIn">
 
-               <div className="relative bg-gradient-to-br from-white to-slate-100 dark:from-slate-800 dark:to-slate-900 
+                <div className="relative bg-gradient-to-br from-white to-slate-100 dark:from-slate-800 dark:to-slate-900 
                    rounded-3xl p-10 w-[420px] text-center shadow-2xl border border-slate-200 
                    dark:border-slate-700 transform transition-all duration-300 scale-100 animate-popup">
 
-                 {/* Animated Success Circle */}
-                 <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center 
+                  {/* Animated Success Circle */}
+                  <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center 
                      rounded-full bg-gradient-to-r from-emerald-400 to-green-500 
                      shadow-lg animate-bounce">
-                   <span className="text-4xl text-white">✓</span>
-                 </div>
+                    <span className="text-4xl text-white">✓</span>
+                  </div>
 
-                 {/* Heading */}
-                 <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 
+                  {/* Heading */}
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 
                     bg-clip-text text-transparent mb-3">
-                   Profile Updated Successfully!
-                 </h2>
+                    Profile Updated Successfully!
+                  </h2>
 
-                 {/* Action Button */}
-                 <button
-                   onClick={() => setProfilePopup(false)}
-                   className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 
+                  {/* Action Button */}
+                  <button
+                    onClick={() => setProfilePopup(false)}
+                    className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 
                   text-white rounded-2xl font-semibold 
                   shadow-lg hover:scale-105 hover:shadow-emerald-400/40 
                   transition-all duration-300"
-                 >
-                   Ok
-                 </button>
+                  >
+                    Ok
+                  </button>
 
-               </div>
-             </div>
+                </div>
+              </div>
             )}
           </main>
         </div>

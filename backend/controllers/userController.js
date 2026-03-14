@@ -1,5 +1,6 @@
 // backend/controller/userController.js
 import User from "../models/User.js";
+import CommunityPost from "../models/CommunityPost.js";
 import jwt from "jsonwebtoken";
 import cloudinary from "../config/cloudinary.js";
 import fs from "fs";
@@ -315,6 +316,30 @@ const removePurchasedCourse = async (req, res) => {
   }
 };
 
+ // Delete User-Account 
+ const deleteAccount= async (req,res) => {
+   try {
+    
+    const userId= req.user.id;
+
+     // delete user's community posts
+     await CommunityPost.destroy({
+      where: {  userId }
+    });
+    
+    //delete user
+    await User.destroy({
+      where: {id: userId}
+    });
+
+    res.status(200).json({
+      message: "Account Deleted Successfully"  
+    });
+   } catch (error) {
+    console.error("Delete Account Error", error);
+    res.status(500).json({message: "Failed to delete account"}); 
+  } 
+}
 // EXPORTS
 export {
   registerUser,
@@ -327,4 +352,5 @@ export {
   updateUserSettings, // stub
   updateUserProfile, // stub
   removePurchasedCourse,
+  deleteAccount,
 };

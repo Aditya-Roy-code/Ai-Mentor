@@ -11,6 +11,7 @@ import {
   getUserSettings,
   updateUserSettings,
   removePurchasedCourse,
+  deleteAccount,
 } from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
@@ -37,5 +38,6 @@ router.route("/course-progress").put(protect, updateCourseProgress);
 router.route("/watched-videos").get(protect, getWatchedVideos);
 router.route("/settings").get(protect, getUserSettings).put(protect, updateUserSettings);
 router.route("/remove-course").post(protect, removePurchasedCourse);
+router.route("/delete-account").delete(protect, deleteAccount);
 
 export default router;
