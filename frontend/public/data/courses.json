@@ -147,6 +147,27 @@
       "subtopics": [],
       "createdAt": "2026-03-14T00:00:00.000Z",
       "updatedAt": "2026-03-14T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Data Science",
+      "category": "AI / Technology",
+      "categoryColor": "bg-indigo-100 text-indigo-600",
+      "lessons": "36 lessons",
+      "lessonsCount": 36,
+      "level": "Advanced",
+      "price": "₹1799",
+      "priceValue": 1799,
+      "currency": "INR",
+      "rating": 4.9,
+      "students": "1.2k students",
+      "studentsCount": 1200,
+      "image": "AI_Tutor_New_UI/Dashboard/data_analytics.png",
+      "isBookmarked": false,
+      "modules": [],
+      "subtopics": [],
+      "createdAt": "2026-03-17T00:00:00.000Z",
+      "updatedAt": "2026-03-17T00:00:00.000Z"
     }
   ]
 }

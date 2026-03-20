@@ -997,5 +997,479 @@
         ]
       }
     }
+  },
+  "5": {
+    "modules": [
+      {
+        "id": "module-1",
+        "title": "Module 1: Introduction to Data Science",
+        "lessons": [
+          {
+            "id": "ds-what-is-data-science",
+            "title": "What is Data Science?",
+            "duration": "12 min",
+            "completed": false,
+            "playing": true,
+            "type": "video",
+            "topic": "Define data science, its interdisciplinary nature, and why it is foundational for AI-driven decision making.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-applications-of-data-science",
+            "title": "Applications of Data Science",
+            "duration": "13 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Explore practical applications of data science in healthcare, finance, e-commerce, and recommendation systems.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-data-science-lifecycle",
+            "title": "Data Science Lifecycle",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Explain the end-to-end data science lifecycle from problem framing to deployment and monitoring.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-2",
+        "title": "Module 2: Python Basics for Data Science",
+        "lessons": [
+          {
+            "id": "ds-python-overview",
+            "title": "Python for Data Science Overview",
+            "duration": "12 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Understand why Python is preferred for data science and review its ecosystem for analysis workflows.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-python-variables-data-types-operators",
+            "title": "Variables, Data Types, and Operators",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Learn Python variables, core data types, and operators used in data processing scripts.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-python-numpy-pandas-libraries",
+            "title": "Working with Libraries (NumPy, Pandas)",
+            "duration": "16 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Use NumPy and Pandas fundamentals for efficient numerical computation and tabular data handling.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-3",
+        "title": "Module 3: Data Handling with Pandas",
+        "lessons": [
+          {
+            "id": "ds-pandas-introduction",
+            "title": "Introduction to Pandas",
+            "duration": "11 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Introduce Pandas data structures and core capabilities for reading, transforming, and summarizing datasets.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-pandas-dataframes-series",
+            "title": "DataFrames and Series",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Work with DataFrames and Series to perform filtering, indexing, grouping, and aggregation.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-pandas-data-cleaning-techniques",
+            "title": "Data Cleaning Techniques",
+            "duration": "16 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Apply practical Pandas-based data cleaning methods for duplicates, outliers, and inconsistent records.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-4",
+        "title": "Module 4: Data Visualization Basics",
+        "lessons": [
+          {
+            "id": "ds-visualization-introduction",
+            "title": "Introduction to Data Visualization",
+            "duration": "12 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Cover visualization principles to communicate trends, comparisons, and distributions effectively.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-visualization-matplotlib-seaborn",
+            "title": "Using Matplotlib and Seaborn",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Build visualizations with Matplotlib and Seaborn for exploratory analysis and reporting.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-visualization-graphs-charts",
+            "title": "Creating Graphs and Charts",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Create bar, line, scatter, and distribution charts while selecting the right graph for each use case.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-5",
+        "title": "Module 5: Statistics & Probability",
+        "lessons": [
+          {
+            "id": "ds-statistics-descriptive",
+            "title": "Descriptive Statistics",
+            "duration": "13 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Learn descriptive statistics metrics such as mean, median, mode, variance, and standard deviation.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-statistics-probability-basics",
+            "title": "Probability Basics",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Understand foundational probability concepts including events, conditional probability, and Bayes intuition.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-statistics-data-distributions",
+            "title": "Data Distributions",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Explain normal and non-normal distributions and how distribution shape affects analysis decisions.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-6",
+        "title": "Module 6: Exploratory Data Analysis (EDA)",
+        "lessons": [
+          {
+            "id": "ds-eda-understanding-data",
+            "title": "Understanding Data",
+            "duration": "12 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Perform initial EDA to inspect schema, data quality, cardinality, and summary signals.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-eda-data-cleaning",
+            "title": "Data Cleaning",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Use EDA insights to clean missing values, outliers, and formatting issues before modeling.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-eda-visualization-for-insights",
+            "title": "Visualization for Insights",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Create EDA visualizations that surface actionable insights and data relationships.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-7",
+        "title": "Module 7: Feature Engineering",
+        "lessons": [
+          {
+            "id": "ds-feature-selection",
+            "title": "Feature Selection",
+            "duration": "13 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Select relevant predictive features using filter, wrapper, and embedded selection approaches.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-feature-transformation",
+            "title": "Feature Transformation",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Transform raw variables with encoding, scaling, and normalization techniques for model readiness.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-feature-handling-missing-values",
+            "title": "Handling Missing Values",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Apply imputation and missingness strategies to reduce bias and preserve predictive signal.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-8",
+        "title": "Module 8: Machine Learning Basics",
+        "lessons": [
+          {
+            "id": "ds-ml-introduction",
+            "title": "Introduction to Machine Learning",
+            "duration": "12 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Introduce supervised and unsupervised learning workflows, model training, and evaluation basics.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-ml-regression-models",
+            "title": "Regression Models",
+            "duration": "16 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Build and evaluate regression models to predict continuous outcomes on structured datasets.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-ml-classification-models",
+            "title": "Classification Models",
+            "duration": "16 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Train and compare classification algorithms for categorical prediction tasks and decision boundaries.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-9",
+        "title": "Module 9: Deep Learning Fundamentals",
+        "lessons": [
+          {
+            "id": "ds-dl-introduction",
+            "title": "Introduction to Deep Learning",
+            "duration": "13 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Explain how deep learning extends machine learning with multi-layer neural network architectures.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-dl-neural-network-basics",
+            "title": "Neural Network Basics",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Understand neurons, layers, forward propagation, and loss computation in basic neural networks.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-dl-activation-functions",
+            "title": "Activation Functions",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Compare activation functions such as ReLU, sigmoid, and tanh for nonlinear learning behavior.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-10",
+        "title": "Module 10: Neural Networks",
+        "lessons": [
+          {
+            "id": "ds-nn-training-neural-networks",
+            "title": "Training Neural Networks",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Train neural networks with epochs, batches, validation, and practical training diagnostics.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-nn-backpropagation",
+            "title": "Backpropagation",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Describe backpropagation mechanics and gradient updates that drive neural network learning.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-nn-optimization-techniques",
+            "title": "Optimization Techniques",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Apply optimization methods like SGD, momentum, and Adam for stable model convergence.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-11",
+        "title": "Module 11: Natural Language Processing (NLP)",
+        "lessons": [
+          {
+            "id": "ds-nlp-introduction",
+            "title": "Introduction to NLP",
+            "duration": "12 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Introduce NLP tasks, language representation, and common real-world text processing scenarios.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-nlp-text-processing",
+            "title": "Text Processing",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Perform tokenization, stopword removal, stemming, and vectorization for NLP pipelines.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-nlp-sentiment-analysis",
+            "title": "Sentiment Analysis",
+            "duration": "15 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Build a sentiment analysis workflow that classifies opinion polarity in text corpora.",
+            "course": "Data Science"
+          }
+        ]
+      },
+      {
+        "id": "module-12",
+        "title": "Module 12: Real-world Data Science Projects",
+        "lessons": [
+          {
+            "id": "ds-project-building-a-data-science-project",
+            "title": "Building a Data Science Project",
+            "duration": "16 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Plan and execute a complete data science project from business problem to validated results.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-project-end-to-end-ml-pipeline",
+            "title": "End-to-End ML Pipeline",
+            "duration": "17 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Design an end-to-end ML pipeline including ingestion, training, evaluation, and inference stages.",
+            "course": "Data Science"
+          },
+          {
+            "id": "ds-project-deployment-basics",
+            "title": "Deployment Basics",
+            "duration": "14 min",
+            "completed": false,
+            "playing": false,
+            "type": "video",
+            "topic": "Cover model deployment basics, serving options, monitoring, and iterative improvement in production.",
+            "course": "Data Science"
+          }
+        ]
+      }
+    ],
+    "course": {
+      "title": "Data Science",
+      "subtitle": "Complete Data Science Path from Foundations to Deployment",
+      "logo": "AI_Tutor_New_UI/Dashboard/data_analytics.png",
+      "progress": 0
+    },
+    "currentLesson": {
+      "id": "ds-what-is-data-science",
+      "title": "What is Data Science?",
+      "module": "Module 1: Introduction to Data Science",
+      "youtubeUrl": "",
+      "content": {
+        "introduction": "Data Science combines statistics, programming, and domain knowledge to extract insights and build intelligent solutions. This course teaches a full path from Python and Pandas to machine learning, deep learning, NLP, and deployment fundamentals.",
+        "keyConcepts": [
+          {
+            "title": "Data Foundations",
+            "description": "Understand data collection, cleaning, exploration, and feature preparation workflows.",
+            "borderColor": "border-[#3B82F6]",
+            "bgColor": "bg-white",
+            "textColor": "text-black"
+          },
+          {
+            "title": "Model Building",
+            "description": "Train and evaluate machine learning and deep learning models for prediction tasks.",
+            "borderColor": "border-[#60A5FA]",
+            "bgColor": "bg-white",
+            "textColor": "text-black"
+          },
+          {
+            "title": "Production Thinking",
+            "description": "Deploy, monitor, and improve models to deliver long-term real-world impact.",
+            "borderColor": "border-[#1E40AF]",
+            "bgColor": "bg-white",
+            "textColor": "text-black"
+          }
+        ]
+      }
+    }
   }
 }
