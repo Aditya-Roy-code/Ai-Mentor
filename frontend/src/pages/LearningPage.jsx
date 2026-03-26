@@ -688,6 +688,10 @@ export default function Learning() {
 
   const togglePlay = () => {
     if (videoRef.current) {
+      if (!selectedCelebrity && !isPlaying) {
+        setIsCelebrityModalOpen(true);
+        return;
+      }
       if (isPlaying) {
         videoRef.current.pause();
         setIsPlaying(false);
