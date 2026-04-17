@@ -216,7 +216,7 @@ export default function Settings() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:5000/api/contactus",
+      const response = await axios.post("/api/contactus",
         { email: user.email, subject: contactForm.subject.trim(), message: contactForm.message.trim() },
         { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
       );
@@ -240,7 +240,11 @@ export default function Settings() {
       try {
         const token = localStorage.getItem("token");
         const { data } = await axios.get("/api/users/settings", { headers: { Authorization: `Bearer ${token}` } });
+        const notifications = data?.notifications
+          ? JSON.parse(JSON.stringify(data.notifications))
+          : null;
         setSettingsData(data);
+        setOriginalNotifications(notifications);
         if (data?.appearance?.language) i18n.changeLanguage(data.appearance.language);
       } catch (err) { console.error("Failed to fetch notification settings:", err); }
     };
@@ -283,7 +287,11 @@ export default function Settings() {
           <div className="flex flex-col items-center">
             <div className="relative mb-4">
               <img
-                src={avatarFile ? URL.createObjectURL(avatarFile) : user?.avatar_url ? user.avatar_url : `https://api.dicebear.com/8.x/initials/svg?seed=${formData.firstName}%20${formData.lastName}`}
+                src={avatarFile ? URL.createObjectURL(avatarFile) : user?.avatar_url ? user.avatar_url : `https://api.dicebear.com/8.x/initials/svg?seed=${encodeURIComponent(`${formData.firstName} ${formData.lastName}`)}`}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = `https://api.dicebear.com/8.x/initials/svg?seed=${encodeURIComponent(`${formData.firstName} ${formData.lastName}`)}`;
+                }}
                 alt="Profile"
                 className="w-24 h-24 rounded-full border-4 border-[rgba(255,135,89,0.65)] shadow-[0_4px_6px_0_rgba(0,0,0,0.10),0_10px_15px_0_rgba(0,0,0,0.10)]"
               />
