@@ -62,3 +62,17 @@ export const clearAllNotificationsApi = async () => {
     throw error;
   }
 };
+export const fetchUnreadCount = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/notifications/unread-count`, {
+      headers: getHeaders(),
+    });
+
+    if (!response.ok) throw new Error("Failed to fetch unread count");
+
+    return await response.json();
+  } catch (error) {
+    console.error("Unread Count Error:", error);
+    throw error;
+  }
+};

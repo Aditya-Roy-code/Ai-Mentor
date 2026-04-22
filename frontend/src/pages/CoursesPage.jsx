@@ -403,13 +403,7 @@ const CoursesPage = () => {
                           </div>
                         </div>
 
-                        {/* Apply Filters Button (Mobile Friendly UX) */}
-                        <button
-                          onClick={() => setShowFilters(false)}
-                          className="w-full mt-6 py-3 px-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-teal-500/25 hover:scale-[1.02] transition-all"
-                        >
-                          Apply Filters
-                        </button>
+                       
                       </div>
                     </>
                   )}
@@ -605,5 +599,4 @@ const CoursesPage = () => {
 };
 
 export default CoursesPage;
-
 
