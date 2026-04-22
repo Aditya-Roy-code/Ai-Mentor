@@ -514,9 +514,9 @@ const Analytics = () => {
           )}
 
           {activeTab === "calendar" && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
               {/* CALENDAR */}
-              <div className="lg:col-span-2 bg-white dark:bg-[#1A1A1A] rounded-2xl p-6 shadow-lg">
+              <div className="lg:col-span-2 bg-white dark:bg-[#1A1A1A] rounded-2xl p-3 shadow-lg">
                 {/* Month Navigation */}
                 <div className="flex justify-between items-center mb-6">
                   <button
@@ -752,7 +752,7 @@ const Analytics = () => {
               </div>
 
               {/* TASK PANEL */}
-              <div className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-6 shadow-lg">
+              <div className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-3 shadow-lg">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-bold text-[#2D3436] dark:text-white flex items-center gap-2">
                     <Target className="w-5 h-5 text-[#ff6d34]" />
@@ -760,18 +760,18 @@ const Analytics = () => {
                   </h3>
                 </div>
 
-                <div className="flex gap-2 mb-6">
+                <div className="flex flex-col sm:flex-row gap-2 mb-6">
                   <input
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addTask()}
-                    className="flex-1 border border-[#CCCCCC] dark:border-gray-700 dark:bg-gray-900 dark:text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff6d34] transition placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                    className="flex-1 min-w-0 border border-[#CCCCCC] dark:border-gray-700 dark:bg-gray-900 dark:text-white p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff6d34] transition placeholder:text-gray-400 dark:placeholder:text-gray-500"
                     placeholder={t('analytics.add_task_placeholder')}
                   />
 
                   <button
                     onClick={addTask}
-                    className="bg-[#ff6d34] hover:bg-[#ff6d34]/90 text-white px-4 rounded-xl transition flex items-center justify-center gap-1"
+                    className="w-full sm:w-auto bg-[#ff6d34] hover:bg-[#ff6d34]/90 text-white px-4 py-3 rounded-xl transition flex items-center justify-center gap-1 whitespace-nowrap"
                   >
                     <Plus className="w-4 h-4" />
                     {t('analytics.add_btn')}
