@@ -158,14 +158,14 @@ const Header = () => {
               className="lg:hidden p-2 rounded-xl bg-card border border-border hover:bg-canvas-alt transition-all"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
-              {sidebarOpen ? <X className="w-5 h-5 text-muted" /> : <Menu className="w-5 h-5 text-muted" />}
+              {sidebarOpen ? <X className="w-5 h-5 text-muted" /> : <Menu className="w-6 h-6 text-muted" />}
             </button>
 
             <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/dashboard")}>
               <img
                 src="/upto.png"
                 alt="UptoSkills Logo"
-                className="h-8 sm:h-10 w-auto"
+                className="h-8 sm:h-12 w-auto"
               />
             </div>
           </div>
@@ -179,7 +179,7 @@ const Header = () => {
                 onClick={() => setNotifOpen(!notifOpen)}
                 className="relative cursor-pointer p-1.5 sm:p-2.5 hover:bg-canvas-alt rounded-xl transition-all group"
               >
-                <Bell className="w-5 h-5 text-muted group-hover:rotate-12 transition-transform" />
+                <Bell className="w-6 h-6 text-muted group-hover:rotate-12 transition-transform" />
                 {unreadCount > 0 && (
                   <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-orange-500 rounded-full border-2 border-card flex items-center justify-center text-[10px] font-black text-white animate-in zoom-in duration-300">
                     {unreadCount}
@@ -259,7 +259,7 @@ const Header = () => {
                 <div className="relative">
                   <img
                     src={user?.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${encodeURIComponent(`${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.name || displayName)}`}
-                    className="w-9 h-9 rounded-xl shadow-md border border-border/50 group-hover:border-teal-500 transition-all object-cover"
+                    className="w-10 h-10 rounded-xl shadow-md border border-border/50 group-hover:border-teal-500 transition-all object-cover"
                     alt="Avatar"
                     onError={(e) => {
                       const seed = encodeURIComponent(`${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.name || displayName);
