@@ -506,13 +506,13 @@ const CoursesPage = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={scrollLeft}
-                    className="p-2 rounded-full bg-card border border-border hover:bg-teal-50 hover:border-teal-400 transition-all shadow-sm"
+                    className="p-2 rounded-full bg-card border border-border hover:bg-teal-500/10 hover:border-teal-500/50 dark:hover:bg-teal-500/20 dark:hover:border-teal-500/40 transition-all shadow-sm"
                   >
                     <ChevronLeft className="w-5 h-5 text-main" />
                   </button>
                   <button
                     onClick={scrollRight}
-                    className="p-2 rounded-full bg-card border border-border hover:bg-teal-50 hover:border-teal-400 transition-all shadow-sm"
+                    className="p-2 rounded-full bg-card border border-border hover:bg-teal-500/10 hover:border-teal-500/50 dark:hover:bg-teal-500/20 dark:hover:border-teal-500/40 transition-all shadow-sm"
                   >
                     <ChevronRight className="w-5 h-5 text-main" />
                   </button>
