@@ -249,6 +249,7 @@ def get_celebrity_video(celebrity_name: str) -> str:
     return default
 
 
+
 # --------------------------
 # Serve Files
 # --------------------------
@@ -281,6 +282,7 @@ def home():
         "llm_providers_available": available,
         "llm_priority": "Groq → DeepSeek Flash → DeepSeek Pro → Gemini",
     }
+
 
 
 @app.get("/transcript/{filename}")
